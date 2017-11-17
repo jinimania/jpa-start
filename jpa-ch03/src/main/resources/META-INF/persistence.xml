@@ -7,10 +7,10 @@
   version="2.1">
   <persistence-unit name="jpastart" transaction-type="RESOURCE_LOCAL">
     <!--<class>jpastart.reserve.model.User</class>-->
-    <!--<class>jpastart.reserve.model.Room</class>-->
+    <class>jpastart.reserve.model.Room</class>
     <class>jpastart.reserve.model.Hotel</class>
-    <!--<class>jpastart.reserve.model.Review</class>-->
-    <!--<class>jpastart.grade.model.City</class>-->
+    <class>jpastart.reserve.model.Review</class>
+    <class>jpastart.guide.model.City</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
