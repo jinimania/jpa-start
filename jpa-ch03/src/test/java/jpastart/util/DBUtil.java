@@ -92,6 +92,6 @@ public class DBUtil {
 
   public static Connection getConnection() throws SQLException {
     return DriverManager.getConnection(
-        "jdbc:mariadb://localhost:3306/jpastart?characterEncoding=utf8", "jpauser", "jpauser");
+        "jdbc:mariadb://localhost:3306/jpastart?characterEncoding=utf8", "jpauser", "jpapass");
   }
 }
