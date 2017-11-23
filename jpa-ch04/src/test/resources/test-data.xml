@@ -35,15 +35,24 @@
     <column>id</column>
     <column>name</column>
     <column>grade</column>
+    <column>zipcode</column>
+    <column>address1</column>
+    <column>address2</column>
     <row>
       <value>H100-01</value>
-      <value>최고 호텔</value>
-      <value>STAR5</value>
+      <value>베스트웨스턴 구로호텔</value>
+      <value>STAR4</value>
+      <value>08393</value>
+      <value>서울시 구로구</value>
+      <value>구로동 1128-1</value>
     </row>
     <row>
       <value>H100-02</value>
-      <value>최고 호텔</value>
-      <value>STAR3</value>
+      <value>여의도모텔</value>
+      <value>STAR1</value>
+      <null/>
+      <null/>
+      <null/>
     </row>
   </table>
 
@@ -58,5 +67,17 @@
   <table name="city">
     <column>id</column>
     <column>name</column>
+  </table>
+  <table name="month_charge">
+    <column>hotel_id</column>
+    <column>year_mon</column>
+    <column>charge_amt</column>
+    <column>unpay_amt</column>
+    <row>
+      <value>H100-01</value>
+      <value>201608</value>
+      <value>1000</value>
+      <value>0</value>
+    </row>
   </table>
 </dataset>
