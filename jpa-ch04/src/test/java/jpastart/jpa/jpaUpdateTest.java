@@ -5,7 +5,8 @@ import static org.junit.Assert.assertThat;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import jpastart.reserve.model.Room;
+import jpastart.common.model.Address;
+import jpastart.reserve.model.Hotel;
 import org.junit.Test;
 
 public class jpaUpdateTest extends JpaTestBase {
@@ -16,8 +17,8 @@ public class jpaUpdateTest extends JpaTestBase {
     final EntityTransaction transaction = entityManager.getTransaction();
     try {
       transaction.begin();
-      final Room room = entityManager.find(Room.class, "R101");
-      room.changeName("카프리");
+      final Hotel hotel = entityManager.find(Hotel.class, "H100-01");
+      hotel.changeAddress(new Address("08393", "서울시 구로구", "디지털로32길 72"));
       transaction.commit();
     } catch (Exception ex) {
       transaction.rollback();
@@ -26,9 +27,9 @@ public class jpaUpdateTest extends JpaTestBase {
       entityManager.close();
     }
     entityManager = EMF.createEntityManager();
-    final Room room = entityManager.find(Room.class, "R101");
+    final Hotel hotel = entityManager.find(Hotel.class, "H100-01");
     entityManager.close();
-    assertThat(room.getName(), equalTo("카프리"));
+    assertThat(hotel.getAddress().getAddress2(), equalTo("디지털로32길 72"));
 
   }
 }

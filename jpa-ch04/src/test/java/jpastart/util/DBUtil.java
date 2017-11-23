@@ -51,7 +51,7 @@ public class DBUtil {
     }
   }
 
-  private static void close(final Connection conn) {
+  public static void close(final Connection conn) {
     if (conn != null) {
       try {
         conn.close();
@@ -61,7 +61,7 @@ public class DBUtil {
     }
   }
 
-  private static void close(final Statement stmt) {
+  public static void close(final Statement stmt) {
     if (stmt != null) {
       try {
         stmt.close();
@@ -71,7 +71,7 @@ public class DBUtil {
     }
   }
 
-  private static void close(final ResultSet rs) {
+  public static void close(final ResultSet rs) {
     if (rs != null) {
       try {
         rs.close();

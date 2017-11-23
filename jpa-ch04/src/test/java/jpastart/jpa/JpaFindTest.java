@@ -6,24 +6,30 @@ import static org.junit.Assert.assertThat;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import jpastart.reserve.model.Room;
+import jpastart.reserve.model.Hotel;
 import org.junit.Test;
 
 public class JpaFindTest extends JpaTestBase {
 
   @Test
-  public void find() {
-    assertThat(findRoomById("R101"), notNullValue());
-    assertThat(findRoomById("NO_ID"), nullValue());
+  public void findNotNullEmbeddedValue() {
+    final Hotel hotel = findHotelById("H100-01");
+    assertThat(hotel.getAddress(), notNullValue());
   }
 
-  private Room findRoomById(final String roomId) {
-    Room room;
+  @Test
+  public void findNullEmbeddedValue() {
+    final Hotel hotel = findHotelById("H100-02");
+    assertThat(hotel.getAddress(), nullValue());
+  }
+
+  private Hotel findHotelById(final String hotelId) {
+    Hotel hotel = null;
     final EntityManager entityManager = EMF.createEntityManager();
     final EntityTransaction transaction = entityManager.getTransaction();
     try {
       transaction.begin();
-      room = entityManager.find(Room.class, roomId);
+      hotel = entityManager.find(Hotel.class, hotelId);
       transaction.commit();
     } catch (Exception ex) {
       transaction.rollback();
@@ -31,6 +37,6 @@ public class JpaFindTest extends JpaTestBase {
     } finally {
       entityManager.close();
     }
-    return room;
+    return hotel;
   }
 }
