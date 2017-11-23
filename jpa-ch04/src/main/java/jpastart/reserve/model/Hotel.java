@@ -40,6 +40,10 @@ public class Hotel {
     return grade;
   }
 
+  public Address getAddress() {
+    return address;
+  }
+
   public void changeAddress(final Address newAddress) {
     this.address = newAddress;
   }
