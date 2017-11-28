@@ -20,4 +20,21 @@ public class EMF {
   public static EntityManager createEntityManager() {
     return emf.createEntityManager();
   }
+
+  public static void closeCurrentEntityManager() {
+    final EntityManager em = currentEm.get();
+    if (em != null) {
+      currentEm.remove();
+      em.close();
+    }
+  }
+
+  public static EntityManager currentEntityManager() {
+    EntityManager em = currentEm.get();
+    if (em == null) {
+      em = emf.createEntityManager();
+      currentEm.set(em);
+    }
+    return em;
+  }
 }
